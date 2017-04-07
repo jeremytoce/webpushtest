@@ -3,39 +3,12 @@
     <link rel="stylesheet" href="https://js.appboycdn.com/web-sdk/1.6/appboy.min.css" />
     <link rel="manifest" href="/manifest.json" />
     <script type="text/javascript">
+      chrome.gcm.register('855041066578', registerCallback);
       function registerCallback(registrationId) {
         if (chrome.runtime.lastError) {
-          // When the registration fails, handle the error and retry the
-          // registration later.
+          console.log('fail')
           return;
         }
-
-        // Send the registration token to your application server.
-        sendRegistrationId(function(succeed) {
-          // Once the registration token is received by your server,
-          // set the flag such that register will not be invoked
-          // next time when the app starts up.
-          if (succeed)
-            chrome.storage.local.set({registered: true});
-        });
-      }
-
-      function sendRegistrationId(callback) {
-        // Send the registration token to your application server
-        // in a secure way.
-      }
-      console.log('IN HERE')
-      chrome.runtime.onStartup.addListener(function() {
-        chrome.storage.local.get("registered", function(result) {
-          // If already registered, bail out.
-          if (result["registered"])
-            return;
-
-          // Up to 100 senders are allowed.
-          var senderIds = ["855041066578"];
-          chrome.gcm.register(senderIds, registerCallback);
-        });
-      });
     </script>
     <script type="text/javascript">
       +function(a,p,P,b,y) {
