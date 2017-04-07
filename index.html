@@ -13,6 +13,17 @@
         defaultNotificationImage: 'https://cp.pushwoosh.com/img/logo-medium.png'
     }]);
 
+    Pushwoosh.push(function(api) {
+        api.getTags().then(function(result) {
+            if (!result.result['My Tag']) {
+                return api.setTags({'My Tag': 'value'}).then(function(r) {
+                    console.log('setTags result', r);
+                });
+            }
+        }).catch(function(e) {
+            console.log('error', e);
+        });
+    })
 
     </script>
     
