@@ -20,13 +20,16 @@
     Pushwoosh.push(function(api) {
         api.getTags().then(function(result) {
             if (!result.result['My Tag']) {
+                console.log('huh')
                 return api.setTags({'My Tag': 'value'}).then(function(r) {
                     console.log('setTags result', r);
                 });
             }
+        console.log('huh2');
         }).catch(function(e) {
             console.log('error', e);
         });
+      console.log('huh3');
     })
     </script>
     
