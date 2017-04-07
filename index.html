@@ -16,7 +16,7 @@
     </script>
 
     <script type="text/javascript">
-    console.log(Pushwoosh);
+    console.log(Pushwoosh.push());
     Pushwoosh.push(function(api) {
         api.getTags().then(function(result) {
             if (!result.result['My Tag']) {
