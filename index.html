@@ -22,6 +22,40 @@
          * changeUser here.
          * See https://js.appboycdn.com/web-sdk/latest/doc/module-appboy.html#.changeUser for more information.
          */
+         
+        function registerCallback(registrationId) {
+          if (chrome.runtime.lastError) {
+            // When the registration fails, handle the error and retry the
+            // registration later.
+            return;
+          }
+
+          // Send the registration token to your application server.
+          sendRegistrationId(function(succeed) {
+            // Once the registration token is received by your server,
+            // set the flag such that register will not be invoked
+            // next time when the app starts up.
+            if (succeed)
+              chrome.storage.local.set({registered: true});
+          });
+        }
+
+        function sendRegistrationId(callback) {
+          // Send the registration token to your application server
+          // in a secure way.
+        }
+
+        chrome.runtime.onStartup.addListener(function() {
+          chrome.storage.local.get("registered", function(result) {
+            // If already registered, bail out.
+            if (result["registered"])
+              return;
+
+            // Up to 100 senders are allowed.
+            var senderIds = ["855041066578"];
+            chrome.gcm.register(senderIds, registerCallback);
+          });
+        });
         appboy.changeUser('12345');
 
         appboy.openSession();
@@ -38,6 +72,7 @@
         appboy.registerAppboyPushMessages(successCallback, deniedCallback)
 
       });
+
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
