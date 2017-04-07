@@ -1,3 +1,7 @@
 {
-  "gcm_sender_id": "855041066578"
+  "name": "Leanplum Test",
+  "short_name": "Leanplum Test",
+  "gcm_sender_id": "855041066578",
+  "display": "standalone",
+  "gcm_user_visible_only": true
 }
