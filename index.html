@@ -11,7 +11,23 @@
         defaultNotificationTitle: 'Pushwoosh',
         defaultNotificationImage: 'https://cp.pushwoosh.com/img/logo-medium.png'
     }]);
-    api.registerDevice();
+    Pushwoosh.push(function(api) {
+
+      //Set tags for the user
+      api.setTags({
+        ’Tag Name 1’ => ‘value1’,
+        ’Tag Name 2’ => ‘value2’
+      });
+
+      //Get tags for the user from server
+      api.getTags();
+
+      //Subscribe for push notifications. The method is called automatically upon the first visit to the website, once the user allows notifications
+      api.registerDevice();
+
+      //Unregister from notifications
+      api.unregisterDevice();
+    });
     </script>
 
     
