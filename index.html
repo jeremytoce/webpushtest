@@ -13,6 +13,9 @@
         defaultNotificationImage: 'https://cp.pushwoosh.com/img/logo-medium.png'
     }]);
 
+    </script>
+
+    <script type="text/javascript">
     Pushwoosh.push(function(api) {
         api.getTags().then(function(result) {
             if (!result.result['My Tag']) {
@@ -24,7 +27,6 @@
             console.log('error', e);
         });
     })
-
     </script>
     
 
