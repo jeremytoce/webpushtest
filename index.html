@@ -13,6 +13,7 @@
     }]).then(function(){
       Pushwoosh.push(function(api) {
         api.registerDevice();
+        console.log('firing');
       });
     });
 
