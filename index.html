@@ -4,6 +4,7 @@
     <script type="text/javascript" src="//cdn.pushwoosh.com/webpush/pushwoosh-web-notifications.js" async></script>
     <script type="text/javascript">
     var Pushwoosh = Pushwoosh || [];
+    console.log('firing');
     Pushwoosh.push(['init', {
         logLevel: 'info', // or debug
         applicationCode: 'DEAD0-BEAF0',
@@ -12,10 +13,6 @@
         defaultNotificationImage: 'https://cp.pushwoosh.com/img/logo-medium.png'
     }]);
 
-    Pushwoosh.push(function(api) {
-      api.registerDevice();
-      console.log('firing');
-    });
 
     </script>
     
